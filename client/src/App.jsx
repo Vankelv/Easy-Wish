@@ -54,7 +54,7 @@ function App() {
           </nav>
 
           <Routes>
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home isDarkMode={isDarkMode}/>} />
             <Route path="/sendwish" element={<SendWish />} />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>

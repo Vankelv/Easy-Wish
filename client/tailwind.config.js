@@ -18,7 +18,7 @@ export default {
       'gray-dark': '#273444',
       'blue-violet': '#8338EC',
       'border-red': "rgb(239 68 68)",
-      'bg-dark-green' : "#3d7625",
+      'dark-green' : "#3d7625",
       'lemon-dark' : "#abc32f",
     },
     fontFamily: {
