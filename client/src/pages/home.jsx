@@ -1,39 +1,37 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+import { Pagination } from "@mui/material";
+import BackgroundLoop from "../components/carousel";
 
-const Home = ({ isDarkMode }) => {
+const Home = () => {
   const [wishes, setWishes] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    const fetchWishes = async (page) => {
+    const fetchWishes = async () => {
       try {
         const response = await axios.get("http://localhost:8080/wish", {
           params: {
-            page,
-            limit: 10 // Adjust the limit as needed
+            page: currentPage,
+            limit: 20 // Adjust the limit as needed
           }
         });
-        setWishes(response.data);
+        setWishes(response.data.wishes);
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error fetching wishes:", error);
       }
     };
 
-    fetchWishes(currentPage); // Fetch wishes initially
+    fetchWishes(); // Fetch wishes initially
 
-    const intervalId = setInterval(() => {
-      fetchWishes(currentPage); // Fetch wishes periodically
-    }, 5000);
+    const intervalId = setInterval(fetchWishes, 3000); // Polling every 3 seconds
 
     return () => {
       clearInterval(intervalId); // Clean up interval on unmount
     };
-  }, [currentPage]);
+  }, [currentPage]); // Fetch wishes when currentPage changes
 
   const handlePageChange = (event, newPage) => {
     setCurrentPage(newPage);
@@ -46,45 +44,54 @@ const Home = ({ isDarkMode }) => {
     "bg-orange",
     "bg-green",
     "bg-blue-violet",
-    "bg-border-red"
+    "bg-lemon-dark",
+    "bg-bg-dark-green",
+    "bg-lighter-pink",
+    "bg-light-pink",
+    "bg-lemon"
   ];
 
   const assignColorToWishes = () => {
     return wishes.map((wish, index) => ({
       ...wish,
-      color: customColors[index % customColors.length] // Cycle through custom colors for wishes
+      color: customColors[index % customColors.length],
     }));
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 m-10 gap-4 px-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 m-1 gap-4 mt-10 mb-10 px-10">
       <div className="md:col-span-2">
+        <h1 className="mt-10 font-poppins  font-bold text-[100px] sm:text-[30px]">
+          Happy Birthday Naa
+        </h1>
+
         {/* Display wishes */}
         <div className="flex flex-wrap font-poppins">
           {assignColorToWishes().map((wish) => (
             <div
               key={wish._id}
-              className={`rounded p-4 mb-4 mr-4 ${wish.color}`}
+              className={`rounded text-[#fffefe] p-4 mb-4 mr-4 ${wish.color}`}
             >
               <p className="font-bold">{wish.senderName}</p>
               <p>{wish.message}</p>
             </div>
           ))}
         </div>
+
         {/* Pagination */}
-        <Stack spacing={2} justifyContent="center" mt={4}>
-          <Pagination
-            count={totalPages}
-            page={currentPage}
-            onChange={handlePageChange}
-            variant="outlined"
-            shape="rounded"
-            color="primary"
-            size="large"
-          />
-        </Stack>
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={handlePageChange}
+          variant="outlined"
+          shape="rounded"
+          color="primary"
+          size="large"
+          className="mt-5"
+        />
       </div>
-      {/* Slider column */}
+
+      {/* Slider col */}
       <div className="md:mt-10">
         <img
           src="https://pagedone.io/asset/uploads/1696488602.png"
