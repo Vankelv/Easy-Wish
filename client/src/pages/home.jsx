@@ -58,9 +58,9 @@ const Home = ({isDarkMode}) => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3  gap-4 mx-10 my-10">
       <div className="md:col-span-4">
-        <h1 className="mt-10 font-poppins  font-bold text-[100px] sm:text-[30px]">
+        {/* <h1 className="mt-10 font-poppins  font-bold text-[100px] sm:text-[30px]">
           Happy Birthday Naa
-        </h1>
+        </h1> */}
 
         {/* Display wishes */}
         <div className="flex text-left flex-wrap font-poppins">
