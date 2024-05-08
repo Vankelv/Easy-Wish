@@ -45,9 +45,7 @@ const Home = () => {
     "bg-green",
     "bg-blue-violet",
     "bg-lemon-dark",
-    "bg-bg-dark-green",
-    "bg-lighter-pink",
-    "bg-light-pink",
+    "bg-dark-green",
     "bg-lemon"
   ];
 
@@ -59,18 +57,18 @@ const Home = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 m-1 gap-4 mt-10 mb-10 px-10">
+    <div className="grid grid-cols-1 md:grid-cols-3  gap-4 mx-10 my-10">
       <div className="md:col-span-2">
         <h1 className="mt-10 font-poppins  font-bold text-[100px] sm:text-[30px]">
           Happy Birthday Naa
         </h1>
 
         {/* Display wishes */}
-        <div className="flex flex-wrap font-poppins">
+        <div className="flex text-left flex-wrap font-poppins">
           {assignColorToWishes().map((wish) => (
             <div
               key={wish._id}
-              className={`rounded text-[#fffefe] p-4 mb-4 mr-4 ${wish.color}`}
+              className={`rounded text-[#fffefe] p-4 my-5 mr-5 ${wish.color}`}
             >
               <p className="font-bold">{wish.senderName}</p>
               <p>{wish.message}</p>
@@ -96,7 +94,7 @@ const Home = () => {
         <img
           src="https://pagedone.io/asset/uploads/1696488602.png"
           alt="ContactUs tailwind section"
-          className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
+          className="w-full  lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
         />
       </div>
     </div>

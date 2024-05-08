@@ -31,7 +31,22 @@ function App() {
 
   return (
     <Router>
-      <div className='dark:bg-[#090b23] md:w-full justify-center flex flex-col' style={isDarkMode ? { color: 'white' } : {}}>
+      <div 
+        className="bg-overlay-light"
+        style={{
+          position: 'absolute',
+          top: '0',
+          left: '0',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(3, 7, 44, 0.823)', // Adjust the overlay color as needed
+          zIndex: '-1',
+        }}
+      ></div>
+      <div 
+        className='dark:bg-[#090b23] md:w-full  justify-center flex flex-col' 
+        style={isDarkMode ? { color: 'white' } : {}}
+      >
         <h1 className='mt-10 font-poppins text-center font-bold text-[100px] sm:text-[30px]'>Happy Birthday Naa</h1>
         <div className="absolute top-4 right-4 flex items-center">
           <span className='mr-4'><button onClick={toggleFullScreen}><BsArrowsFullscreen/></button></span>
@@ -40,27 +55,22 @@ function App() {
 
         <div className='mx-10'>
           <nav>
-            <ul className="flex justify-center space-x-6 my-6">
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
+            <ul className="flex justify-center space-x-6 font-poppins my-6">
+              
               <li>
                 <Link to="/sendwish">Send Wish</Link>
-              </li>
-              <li>
-                <Link to="/thankyou">Thank You</Link>
               </li>
             </ul>
           </nav>
 
           <Routes>
-            <Route path="/home" element={<Home isDarkMode={isDarkMode}/>} />
+            <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
             <Route path="/sendwish" element={<SendWish />} />
             <Route path="/thankyou" element={<ThankYou />} />
           </Routes>
         </div>
 
-        <div className=' h-40 mx-10'>
+        <div className='mx-10  '>
           <BackgroundLoop/>
         </div>
       </div>

@@ -15,7 +15,7 @@ const images = [
 class BackgroundLoop extends React.Component {
   render() {
     return (
-      <div className="background-loop">
+      <div className="background-loop p-10 ">
         {images.map((image, index) => (
           <img
             key={index}

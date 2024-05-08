@@ -20,6 +20,7 @@ export default {
       'border-red': "rgb(239 68 68)",
       'dark-green' : "#3d7625",
       'lemon-dark' : "#abc32f",
+      'lemon': "#BBC7A4"
     },
     fontFamily: {
       sans: ['Graphik', 'sans-serif'],
