@@ -40,8 +40,8 @@ function App() {
         
         
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/sendwish" element={<SendWish />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<SendWish />} />
           <Route path="/thankyou" element={<ThankYou />} />
         </Routes>
         <div className=' h-40 mx-10'>
