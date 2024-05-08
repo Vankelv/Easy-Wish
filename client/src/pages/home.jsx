@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Pagination } from "@mui/material";
-import BackgroundLoop from "../components/carousel";
 
-const Home = () => {
+const Home = ({isDarkMode}) => {
   const [wishes, setWishes] = useState([]);
   const [totalPages, setTotalPages] = useState(1);
   const [currentPage, setCurrentPage] = useState(1);
@@ -83,9 +82,13 @@ const Home = () => {
           onChange={handlePageChange}
           variant="outlined"
           shape="rounded"
-          color="primary"
+          color={isDarkMode ? "secondary" : "primary"}
           size="large"
           className="mt-5"
+          sx={{ 
+            "& .MuiPaginationItem-root": { color: isDarkMode ? "#fff" : "#000" }, // Adjust text color based on isDarkMode
+            "& .Mui-selected": { backgroundColor: isDarkMode ? "#fff" : "#000" } // Adjust selected page background color based on isDarkMode
+          }}
         />
       </div>
 

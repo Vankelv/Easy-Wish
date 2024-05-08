@@ -1,30 +1,68 @@
-import React from "react";
-import { useState } from "react";
+import * as React from 'react';
+import AspectRatio from '@mui/joy/AspectRatio';
+import Button from '@mui/joy/Button';
+import Card from '@mui/joy/Card';
+import CardActions from '@mui/joy/CardActions';
+import CardContent from '@mui/joy/CardContent';
+import CardOverflow from '@mui/joy/CardOverflow';
+import Typography from '@mui/joy/Typography';
 
-function Card({ prop }) {
-  const [editable, setEditable] = useState(false);
-  const handleClick = () => {
-    setEditable(!editable);
-  };
+export default function CongratCard() {
   return (
-    <div
-      className="
-        flex
-        justify-center
-        text-3xl md:text-7xl 
-        p-6 w-50 h-50 bg-slate-300 md:p-10 md:w-60 md:h-60 md:bg-green-300
-        items-center
-        drop-shadow-md	
-        rounded-md"
+    <Card
+      data-resizable
+      sx={{
+        textAlign: 'center',
+        alignItems: 'center',
+        width: 'auto',
+        overflow: 'auto',
+        resize: 'horizontal',
+        '--icon-size': '100px',
+      }}
     >
-      <div onClick={handleClick} className="flex">
-        <div className={editable ? 'opacity-0' : 'opacity-800'}>{prop}</div>
-        <div className="text-sm cursor-pointer text-gray-500">{editable ? 'close | update' : 'edit'}</div>
-
-        <input className="text-sm w-15 bg-slate-100" type={!editable && "hidden"} value={prop} />
-      </div>
-    </div>
+      <CardOverflow variant="solid" color="warning">
+        <AspectRatio
+          variant="outlined"
+          color="warning"
+          ratio="1"
+          sx={{
+            m: 'auto',
+            transform: 'translateY(50%)',
+            borderRadius: '50%',
+            width: 'var(--icon-size)',
+            boxShadow: 'sm',
+            bgcolor: 'background.surface',
+            position: 'relative',
+          }}
+        >
+          <div>
+          <img
+                  src="/imgs/slider3.png"
+                  alt="Birthday cele"
+                  className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
+                />
+          </div>
+        </AspectRatio>
+      </CardOverflow>
+      <Typography level="title-lg" sx={{ mt: 'calc(var(--icon-size) / 2)' }}>
+        🎊 Thank you 🎊
+      </Typography>
+      <CardContent sx={{ maxWidth: '40ch' }}>
+        You just gain one Cookhat for Salad cooking. Share your achievement with your
+        friends.
+      </CardContent>
+      <CardActions
+        orientation="vertical"
+        buttonFlex={1}
+        sx={{
+          '--Button-radius': '40px',
+          width: 'clamp(min(100%, 160px), 50%, min(100%, 200px))',
+        }}
+      >
+        <Button variant="solid" color="warning">
+          Share
+        </Button>
+      </CardActions>
+    </Card>
   );
 }
-
-export default Card;

@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from '@mui/joy/Button';
+import Modal from '@mui/joy/Modal';
+import ModalClose from '@mui/joy/ModalClose';
+import ModalDialog from '@mui/joy/ModalDialog';
+import DialogTitle from '@mui/joy/DialogTitle';
+import DialogContent from '@mui/joy/DialogContent';
+import CongratCard from "../components/card";
+
 const SendWish = () => {
   const [message, setMessage] = useState("");
   const [senderName, setSenderName] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [variant, setVariant] = useState(undefined);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -36,7 +45,7 @@ const SendWish = () => {
 
   return (
     <section className=" my-0 py-11">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-1 sm:px-6 lg:px-5">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 md:gap-2">
           <div className="lg:mb-0  ">
             <div className="group w-full h-full">
@@ -57,7 +66,27 @@ const SendWish = () => {
             <h2 className="font-manrope text-4xl font-semibold ">
               Send Naa Your Birthday Wish
             </h2>
+            <div>
+            {/* Modal buttons */}
+            <Button
+          variant="soft"
+          color="neutral"
+          onClick={() => {
+            setVariant('soft');
+          }}
+        >
+          Soft
+        </Button>
+        <Modal open={!!variant} onClose={() => setVariant(undefined)}>
+        <ModalDialog variant={variant}>
+          <ModalClose />
+          <DialogTitle>Modal Dialog</DialogTitle>
+          <DialogContent><CongratCard/></DialogContent>
+        </ModalDialog>
+      </Modal>
+          </div>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
+             
               <div className="mb-4">
                 <label
                   htmlFor="message"

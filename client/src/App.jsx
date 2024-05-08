@@ -30,7 +30,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <Router >
       <div 
         className="bg-overlay-light"
         style={{
@@ -38,7 +38,7 @@ function App() {
           top: '0',
           left: '0',
           width: '100%',
-          height: '100%',
+          height: "100vh",
           backgroundColor: 'rgba(3, 7, 44, 0.823)', // Adjust the overlay color as needed
           zIndex: '-1',
         }}
@@ -53,7 +53,7 @@ function App() {
           <Switcher12 isChecked={isDarkMode} handleCheckboxChange={toggleDarkMode} /> 
         </div>
 
-        <div className='mx-10'>
+        <div className='mx-1'>
           <nav>
             <ul className="flex justify-center space-x-6 font-poppins my-6">
               
