@@ -57,7 +57,7 @@ const Home = ({isDarkMode}) => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3  gap-4 mx-10 my-10">
-      <div className="md:col-span-2">
+      <div className="md:col-span-4">
         <h1 className="mt-10 font-poppins  font-bold text-[100px] sm:text-[30px]">
           Happy Birthday Naa
         </h1>
@@ -93,13 +93,13 @@ const Home = ({isDarkMode}) => {
       </div>
 
       {/* Slider col */}
-      <div className="md:mt-10">
+      {/* <div className="md:mt-10">
         <img
           src="https://pagedone.io/asset/uploads/1696488602.png"
           alt="ContactUs tailwind section"
           className="w-full  lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
         />
-      </div>
+      </div> */}
     </div>
   );
 };
