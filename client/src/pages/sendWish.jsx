@@ -24,7 +24,7 @@ const SendWish = () => {
 
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      const response = await axios.post("http://localhost:8080/wish", {
+      const response = await axios.post("https://easy-wish-uhlf.vercel.app/wish", {
         message,
         senderName,
       });
