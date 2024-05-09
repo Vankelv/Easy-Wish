@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Pagination } from "@mui/material";
+import Avatar from '@mui/material/Avatar';
 
 const Home = ({isDarkMode}) => {
   const [wishes, setWishes] = useState([]);
@@ -62,10 +63,13 @@ const Home = ({isDarkMode}) => {
           {assignColorToWishes().map((wish) => (
             <div
               key={wish._id}
-              className={`rounded text-[#fffefe] p-4 my-5 mr-5 ${wish.color}`}
+              className={`rounded text-[#fffefe] p-4 my-5 mr-5 flex items-center ${wish.color}`}
             >
-              <p className="font-bold">{wish.senderName}</p>
-              <p>{wish.message}</p>
+              <Avatar src="/imgs/slider3.png" size="large" />
+              <div className="ml-3">
+                <p className="font-bold">{wish.senderName}</p>
+                <p>{wish.message}</p>
+              </div>
             </div>
           ))}
         </div>
