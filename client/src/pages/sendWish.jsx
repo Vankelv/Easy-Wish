@@ -78,7 +78,7 @@ const SendWish = () => {
 
           <div className=" border-gray-300 p-5 flex flex-col justify-center lg:p-11 lg:rounded-r-2xl border rounded-2xl ">
             <h2 className="font-manrope text-[18px] font-semibold ">
-             Say something nice to Naa 😊
+              Say something nice to Naa 😊
             </h2>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
               <div className="mb-4">
@@ -98,6 +98,16 @@ const SendWish = () => {
                   rows={6}
                   required
                 />
+              </div>
+              <div className="border border-dashed my-5 rounded-md border-gray-500 relative">
+                <input type="file" multiple className="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50" />
+                <div className="text-center p-10 absolute top-0 right-0 left-0 m-auto">
+                  <h4>
+                    Drop a beautiful image of you anywhere to upload
+                    <br />or
+                  </h4>
+                  <p className="">Click to select an image</p>
+                </div>
               </div>
               <div className="mb-4">
                 <label htmlFor="senderName" className="block mb-1">
@@ -143,37 +153,36 @@ const SendWish = () => {
                 >
                   <strong className="font-bold mr-2">Awesome! </strong>
                   <div className=" flex items-center justify-between">
-                  <span className="flex-grow">
-                    Your wish was delivered to Naa successfully
-                  </span>
-                  <button
-                    onClick={() => setSuccess(false)} // Close button functionality
-                    className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                    <span className="flex-grow">
+                      Your wish was delivered to Naa successfully
+                    </span>
+                    <button
+                      onClick={() => setSuccess(false)} // Close button functionality
+                      className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
                   </div>
-                  
+
                 </div>
               )}
               <button
                 type="submit"
-                className={`bg-pink w-full text-[#fff] px-4 py-2 rounded hover:bg-blue-600 ${
-                  loading ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`bg-pink w-full text-[#fff] px-4 py-2 rounded hover:bg-blue-600 ${loading ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 disabled={loading}
               >
                 {loading ? "Sending your wish..." : "Submit"}
