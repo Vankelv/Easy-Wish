@@ -65,7 +65,7 @@ const SendWish = () => {
             <div className="group w-full h-full">
               <div className="relative h-auto">
                 <img
-                  src="https://pagedone.io/asset/uploads/1696488602.png"
+                  src="/imgs/Slider.jpeg"
                   alt="ContactUs tailwind section"
                   className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
                 />
