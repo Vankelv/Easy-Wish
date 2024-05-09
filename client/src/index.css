@@ -22,3 +22,10 @@
     color: white;
     /* Add other styles for dark mode */
   }
+
+  @media screen and (orientation: landscape) {
+    body {
+      display: none;
+    }
+    
+  }

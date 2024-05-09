@@ -76,9 +76,9 @@ const SendWish = () => {
             </div>
           </div>
 
-          <div className=" border-[#a8a8a8] p-5 lg:p-11 lg:rounded-r-2xl border-2 rounded-2xl ">
-            <h2 className="font-manrope text-4xl font-semibold ">
-              Send Naa Your Birthday Wish
+          <div className=" border-gray-300 p-5 flex flex-col justify-center lg:p-11 lg:rounded-r-2xl border rounded-2xl ">
+            <h2 className="font-manrope text-[18px] font-semibold ">
+             Say something nice to Naa 😊
             </h2>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
               <div className="mb-4">
