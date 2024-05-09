@@ -7,15 +7,17 @@ import Home from './pages/home';
 import SendWish from './pages/sendWish';
 import ThankYou from './pages/thankYou';
 import BackgroundLoop from './components/carousel';
+import Modal from '@mui/joy/Modal';
+import ModalDialog from '@mui/joy/ModalDialog';
+import DialogTitle from '@mui/joy/DialogTitle';
+import DialogContent from '@mui/joy/DialogContent';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
-
+  const [open, setOpen] = useState(false); 
 
   useEffect(() => {
-  
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
     setIsDarkMode(prefersDarkMode);
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -24,6 +26,22 @@ function App() {
 
     return () => {
       mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleOrientationChange = () => {
+      if (window.screen.orientation.type === 'landscape-primary' || window.screen.orientation.type === 'landscape-secondary') {
+        setOpen(true); 
+      } else {
+        setOpen(false); 
+      }
+    };
+
+    window.addEventListener('orientationchange', handleOrientationChange);
+
+    return () => {
+      window.removeEventListener('orientationchange', handleOrientationChange);
     };
   }, []);
 
@@ -54,7 +72,6 @@ function App() {
         <div className="absolute top-4 gap-5 justify-between right-4 flex items-center">
         <nav>
             <ul className="flex justify-center space-x-6 font-poppins my-6">
-              
               <li >
                 <Link to="/sendwish">Send Wish</Link>
               </li>
@@ -65,8 +82,6 @@ function App() {
         </div>
 
         <div className='mx-1'>
-         
-
           <Routes>
             <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
             <Route path="/sendwish" element={<SendWish />} />
@@ -74,10 +89,18 @@ function App() {
           </Routes>
         </div>
 
-        <div className='mx-10  '>
+        <div className='mx-10'>
           <BackgroundLoop/>
         </div>
       </div>
+      <Modal keepMounted open={open} onClose={() => setOpen(false)}>
+        <ModalDialog>
+          <DialogTitle>Please use portrait</DialogTitle>
+          <DialogContent>
+            App is available in only portrait mode.
+          </DialogContent>
+        </ModalDialog>
+      </Modal>
     </Router>
   );
 }

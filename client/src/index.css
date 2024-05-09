@@ -23,9 +23,9 @@
     /* Add other styles for dark mode */
   }
 
-  @media screen and (orientation: landscape) {
+  /* @media screen and (orientation: landscape) {
     body {
       display: none;
     }
     
-  }
+  } */
