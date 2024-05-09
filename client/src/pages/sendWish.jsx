@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Button from '@mui/joy/Button';
-import Modal from '@mui/joy/Modal';
-import ModalClose from '@mui/joy/ModalClose';
-import ModalDialog from '@mui/joy/ModalDialog';
-import DialogTitle from '@mui/joy/DialogTitle';
-import DialogContent from '@mui/joy/DialogContent';
+import Button from "@mui/joy/Button";
+import Modal from "@mui/joy/Modal";
+import ModalClose from "@mui/joy/ModalClose";
+import ModalDialog from "@mui/joy/ModalDialog";
+import DialogTitle from "@mui/joy/DialogTitle";
+import DialogContent from "@mui/joy/DialogContent";
 import CongratCard from "../components/card";
 
 const SendWish = () => {
@@ -14,26 +14,40 @@ const SendWish = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [variant, setVariant] = useState(undefined);
+
+  const [showModal, setShowModal] = useState(false);
+
+  useEffect(() => {
+    let timer;
+    if (success) {
+      timer = setTimeout(() => {
+        setShowModal(true);
+      }, 4000);
+    }
+    return () => clearTimeout(timer);
+  }, [success]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
 
     try {
-
       await new Promise((resolve) => setTimeout(resolve, 3000));
 
-      const response = await axios.post("https://easy-wish-uhlf.vercel.app/wish", {
-        message,
-        senderName,
-      });
+      const response = await axios.post(
+        "https://easy-wish-uhlf.vercel.app/wish",
+        {
+          message,
+          senderName,
+        }
+      );
 
       setMessage("");
       setSenderName("");
       setLoading(false);
       setError("");
       setSuccess(true);
+
     } catch (err) {
       console.error("Error submitting wish:", err);
       setError(
@@ -45,8 +59,8 @@ const SendWish = () => {
 
   return (
     <section className=" my-0 py-11">
-      <div className="mx-auto max-w-7xl px-1 sm:px-6 lg:px-5">
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 md:gap-2">
+      <div className="px-1 sm:px-6 lg:px-5">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 md:gap-6">
           <div className="lg:mb-0  ">
             <div className="group w-full h-full">
               <div className="relative h-auto">
@@ -62,31 +76,11 @@ const SendWish = () => {
             </div>
           </div>
 
-          <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl mt-6">
+          <div className=" border-[#a8a8a8] p-5 lg:p-11 lg:rounded-r-2xl border-2 rounded-2xl ">
             <h2 className="font-manrope text-4xl font-semibold ">
               Send Naa Your Birthday Wish
             </h2>
-            <div>
-            {/* Modal buttons */}
-            <Button
-          variant="soft"
-          color="neutral"
-          onClick={() => {
-            setVariant('soft');
-          }}
-        >
-          Soft
-        </Button>
-        <Modal open={!!variant} onClose={() => setVariant(undefined)}>
-        <ModalDialog variant={variant}>
-          <ModalClose />
-          <DialogTitle>Modal Dialog</DialogTitle>
-          <DialogContent><CongratCard/></DialogContent>
-        </ModalDialog>
-      </Modal>
-          </div>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
-             
               <div className="mb-4">
                 <label
                   htmlFor="message"
@@ -96,7 +90,7 @@ const SendWish = () => {
                 </label>
                 <textarea
                   id="message"
-                  className="w-full border border-gray-300 focus:outline-none rounded px-3 py-2"
+                  className="w-full border border-gray-300 focus:outline-none text-[#000] rounded px-3 py-2"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   maxLength={100}
@@ -112,7 +106,7 @@ const SendWish = () => {
                 <input
                   type="text"
                   id="senderName"
-                  className="w-full border focus:outline-none border-gray-300 rounded px-3 py-2"
+                  className="w-full border focus:outline-none border-gray-300 text-[#000] rounded px-3 py-2"
                   value={senderName}
                   onChange={(e) => setSenderName(e.target.value)}
                   required
@@ -120,10 +114,9 @@ const SendWish = () => {
               </div>
               {error && (
                 <div className='bg-[#fc818134] border border-[#c53030] font-[14px] my-[30px] text-[#c53030] px-4 py-3 rounded relative" flex items-center role="alert'>
-                  
                   <span className="flex-grow">{error}</span>
                   <button
-                    onClick={() => setError(false)} 
+                    onClick={() => setError(false)}
                     className="ml-2 p-2 text-[#c53030] hover:text-[#fff] focus:outline-none"
                   >
                     <svg
@@ -145,10 +138,11 @@ const SendWish = () => {
               )}
               {success && (
                 <div
-                  className="bg-[#51c87d34] border border-[#317625] my-[30px] text-[#317625] px-4 py-3 rounded relative flex items-center"
+                  className="bg-[#51c87d34] border border-[#317625] my-[30px] text-[#317625] px-4 py-3 rounded relative flex flex-wrap justify-between items-center"
                   role="alert"
                 >
                   <strong className="font-bold mr-2">Awesome! </strong>
+                  <div className=" flex items-center justify-between">
                   <span className="flex-grow">
                     Your wish was delivered to Naa successfully
                   </span>
@@ -171,6 +165,8 @@ const SendWish = () => {
                       />
                     </svg>
                   </button>
+                  </div>
+                  
                 </div>
               )}
               <button
@@ -189,6 +185,14 @@ const SendWish = () => {
           </div>
         </div>
       </div>
+
+      <Modal open={showModal} onClose={() => setShowModal(false)}>
+        <ModalDialog>
+          <DialogContent>
+            <CongratCard />
+          </DialogContent>
+        </ModalDialog>
+      </Modal>
     </section>
   );
 };

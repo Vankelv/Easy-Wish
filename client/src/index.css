@@ -16,3 +16,9 @@
     z-index: -1;
   }
   
+
+  .dark {
+    background-color: #090b23;
+    color: white;
+    /* Add other styles for dark mode */
+  }

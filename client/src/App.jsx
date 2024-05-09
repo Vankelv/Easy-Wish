@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { BsArrowsFullscreen } from "react-icons/bs";
 import './index.css';
@@ -11,9 +11,24 @@ import BackgroundLoop from './components/carousel';
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+
+  useEffect(() => {
+  
+    const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    setIsDarkMode(prefersDarkMode);
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    const handleChange = (e) => setIsDarkMode(e.matches);
+    mediaQuery.addEventListener('change', handleChange);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange);
+    };
+  }, []);
+
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
   };
 
   const toggleFullScreen = () => {
@@ -32,36 +47,25 @@ function App() {
   return (
     <Router >
       <div 
-        className="bg-overlay-light"
-        style={{
-          position: 'absolute',
-          top: '0',
-          left: '0',
-          width: '100%',
-          height: "100vh",
-          backgroundColor: 'rgba(3, 7, 44, 0.823)', // Adjust the overlay color as needed
-          zIndex: '-1',
-        }}
-      ></div>
-      <div 
-        className='dark:bg-[#090b23] md:w-full  justify-center flex flex-col' 
-        style={isDarkMode ? { color: 'white' } : {}}
+      className={` ${isDarkMode ? 'dark' : ''} md:w-full justify-center flex flex-col`}
+      style={isDarkMode ? { color: 'dark' } : {}}
       >
         <h1 className='mt-10 font-poppins text-center font-bold text-[100px] sm:text-[30px]'>Happy Birthday Naa</h1>
-        <div className="absolute top-4 right-4 flex items-center">
+        <div className="absolute top-4 gap-5 justify-between right-4 flex items-center">
+        <nav>
+            <ul className="flex justify-center space-x-6 font-poppins my-6">
+              
+              <li >
+                <Link to="/sendwish">Send Wish</Link>
+              </li>
+            </ul>
+          </nav>
           <span className='mr-4'><button onClick={toggleFullScreen}><BsArrowsFullscreen/></button></span>
           <Switcher12 isChecked={isDarkMode} handleCheckboxChange={toggleDarkMode} /> 
         </div>
 
         <div className='mx-1'>
-          <nav>
-            <ul className="flex justify-center space-x-6 font-poppins my-6">
-              
-              <li>
-                <Link to="/sendwish">Send Wish</Link>
-              </li>
-            </ul>
-          </nav>
+         
 
           <Routes>
             <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
