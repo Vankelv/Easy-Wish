@@ -73,7 +73,7 @@ function App() {
         <nav>
             <ul className="flex justify-center space-x-6 font-poppins my-6">
               <li >
-                <Link to="/sendwish">Send Wish</Link>
+                <Link to="/">Send Wish</Link>
               </li>
             </ul>
           </nav>
