@@ -5,19 +5,31 @@
     {
       "src": "package.json",
       "use": "@vercel/node"
-    },
-    {
-      "src": "uploads/**",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "public/uploads"
-      }
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
       "dest": "/"
+    }
+  ],
+  "plugins": [
+    {
+      "name": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    },
+    {
+      "name": "@vercel/copy-files",
+      "config": {
+        "files": [
+          {
+            "src": "uploads/**",
+            "dest": "public/uploads"
+          }
+        ]
+      }
     }
   ]
 }
