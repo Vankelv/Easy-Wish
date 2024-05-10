@@ -10,6 +10,10 @@ const wishSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+
+  avatar: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now
