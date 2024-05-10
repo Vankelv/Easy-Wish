@@ -14,6 +14,8 @@ const SendWish = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
+  const [imagePreview, setImagePreview] = useState(null);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -27,6 +29,14 @@ const SendWish = () => {
     return () => clearTimeout(timer);
   }, [success]);
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file)); // Use URL.createObjectURL to generate preview URL
+    }
+  };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
@@ -39,6 +49,7 @@ const SendWish = () => {
         {
           message,
           senderName,
+          image: imageFile,
         }
       );
 
@@ -47,7 +58,6 @@ const SendWish = () => {
       setLoading(false);
       setError("");
       setSuccess(true);
-
     } catch (err) {
       console.error("Error submitting wish:", err);
       setError(
@@ -61,7 +71,7 @@ const SendWish = () => {
     <section className=" my-0 py-11">
       <div className="px-1 sm:px-6 lg:px-5">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 md:gap-6">
-          <div className="lg:mb-0  ">
+          <div className="lg:mb-0 ">
             <div className="group w-full h-full">
               <div className="relative h-auto">
                 <img
@@ -84,7 +94,7 @@ const SendWish = () => {
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block mb-1  font-[18px] font-manrope "
+                  className="block mb-1 font-[18px] font-manrope "
                 >
                   Your Message:
                 </label>
@@ -99,6 +109,32 @@ const SendWish = () => {
                   required
                 />
               </div>
+              <div className="border border-dashed my-5 rounded-md border-gray-500 relative">
+                <input
+                  type="file"
+                  className="cursor-pointer absolute inset-0 opacity-0 w-full h-full z-50"
+                  onChange={handleImageChange}
+                />
+                <div className="relative h-64 bg-cover bg-center">
+                  {imagePreview && (
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url('${imagePreview}')` }}
+                    ></div>
+                  )}
+                  {!imagePreview && (
+                    <div className="text-center p-10">
+                      <h4>
+                        Drop a beautiful image of you anywhere to upload
+                        <br />
+                        or
+                      </h4>
+                      <p className="">Click to select an image</p>
+                    </div>
+                  )}
+                </div>
+              </div>
+
               <div className="mb-4">
                 <label htmlFor="senderName" className="block mb-1">
                   Your Name:
@@ -111,16 +147,6 @@ const SendWish = () => {
                   onChange={(e) => setSenderName(e.target.value)}
                   required
                 />
-              </div>
-              <div className="border border-dashed border-gray-500 my-4 rounded relative">
-                <input type="file" multiple class="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50" />
-                <div className="text-center p-10 absolute top-0 right-0 left-0 m-auto">
-                  <h4>
-                    Drop a beautiful image of you anywhere to upload
-                    <br />or
-                  </h4>
-                  <p className="">Select an image</p>
-                </div>
               </div>
               {error && (
                 <div className='bg-[#fc818134] border border-[#c53030] font-[14px] my-[30px] text-[#c53030] px-4 py-3 rounded relative" flex items-center role="alert'>
@@ -176,13 +202,13 @@ const SendWish = () => {
                       </svg>
                     </button>
                   </div>
-
                 </div>
               )}
               <button
                 type="submit"
-                className={`bg-pink w-full text-[#fff] px-4 py-2 rounded hover:bg-blue-600 ${loading ? "opacity-50 cursor-not-allowed" : ""
-                  }`}
+                className={`bg-pink w-full text-[#fff] px-4 py-2 rounded hover:bg-blue-600 ${
+                  loading ? "opacity-50 cursor-not-allowed" : ""
+                }`}
                 disabled={loading}
               >
                 {loading ? "Sending your wish..." : "Submit"}
