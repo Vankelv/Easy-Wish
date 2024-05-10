@@ -3,23 +3,21 @@
   "name": "Birth Wish Hub",
   "builds": [
     {
-      "src": "*.js",
+      "src": "package.json",
       "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/"
-    }
-  ],
-  "builds": [
+    },
     {
       "src": "uploads/**",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "public/uploads"
       }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }
