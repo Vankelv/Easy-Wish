@@ -32,14 +32,14 @@ exports.getAllWishes = async (req, res) => {
 // Controller function to create a new wish
 exports.createWish = async (req, res) => {
     try {
-        const wishes = new Wishes(req.body);
-        if (req.file){
-            wishes.avatar = req.file.path; 
-        }
-        await wishes.save();
-        res.json(wishes);
+      const wishes = new Wishes(req.body);
+      if (req.file){
+        wishes.avatar = req.file.filename; // Use filename instead of path
+      }
+      await wishes.save();
+      res.json(wishes);
     } catch (err) {
-        console.error("Error creating new wish:", err);
-        res.status(500).json({ message: "Error creating new wish" });
+      console.error("Error creating new wish:", err);
+      res.status(500).json({ message: "Error creating new wish" });
     }
-};
+  };

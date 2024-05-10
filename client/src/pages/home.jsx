@@ -11,7 +11,7 @@ const Home = ({isDarkMode}) => {
   useEffect(() => {
     const fetchWishes = async () => {
       try {
-        const response = await axios.get("https://easy-wish-uhlf.vercel.app/wish", {
+        const response = await axios.get("http://localhost:8080/wish", {
           params: {
             page: currentPage,
             limit: 18 
@@ -19,7 +19,7 @@ const Home = ({isDarkMode}) => {
         });
         const wishes = response.data.wishes.map((wish) => ({
           ...wish,
-          avatar: `https://easy-wish-uhlf.vercel.app/wish/${wish.avatar}`
+          avatar: `http://localhost:8080/${wish.avatar}`
         }));
       setWishes(wishes);
         setTotalPages(response.data.totalPages);

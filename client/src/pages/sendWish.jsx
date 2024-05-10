@@ -33,28 +33,32 @@ const SendWish = () => {
       setImagePreview(URL.createObjectURL(file)); // Use URL.createObjectURL to generate preview URL
     }
   };
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-
+  
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
+      const formData = new FormData(); // Create a FormData object
+      formData.append('message', message);
+      formData.append('senderName', senderName);
+      formData.append('avatar', imageFile); // Append the image file
+  
       const response = await axios.post(
         "https://easy-wish-uhlf.vercel.app/wish",
+        formData,
         {
-          message,
-          senderName,
-          image: imageFile,
+          headers: {
+            'Content-Type': 'multipart/form-data' // Set the Content-Type header
+          }
         }
       );
-
+  
       setMessage("");
       setSenderName("");
       setLoading(false);
       setError("");
       setSuccess(true);
+      setImagePreview(null); // Clear image preview
     } catch (err) {
       console.error("Error submitting wish:", err);
       setError(
