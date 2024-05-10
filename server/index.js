@@ -8,6 +8,7 @@
  app.use(cors());
  app.use(express.json());
  app.use('/wish', wishesRoute);
+ app.use('/public', express.static('public'));
  app.use('/uploads', express.static('uploads'));
 
  app.get('/', (req, res) => {
