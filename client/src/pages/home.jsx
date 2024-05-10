@@ -65,7 +65,7 @@ const Home = ({isDarkMode}) => {
               key={wish._id}
               className={`rounded text-[#fffefe] p-4 my-5 mr-5 flex items-center ${wish.color}`}
             >
-              <Avatar src="/imgs/slider3.png" size="large" />
+              <Avatar src={wish.avatar} size="large" />
               <div className="ml-3">
                 <p className="font-bold">{wish.senderName}</p>
                 <p>{wish.message}</p>
