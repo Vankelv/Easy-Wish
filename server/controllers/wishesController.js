@@ -34,7 +34,7 @@ exports.createWish = async (req, res) => {
     try {
       const wishes = new Wishes(req.body);
       if (req.file){
-        wishes.avatar = req.file.path;
+        wishes.avatar = req.file.path.filename; 
       }
       await wishes.save();
       res.json(wishes);
