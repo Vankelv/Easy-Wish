@@ -5,6 +5,8 @@ const wishesController = require('../controllers/wishesController.js')
 const upload = require("../middlewares/upload")
 const  readForbiddenWordsMiddleware = require('../middlewares/filterWordsMiddleware.js')
 
+
+
 router.get('/', wishesController.getAllWishes);
 router.post('/', readForbiddenWordsMiddleware, upload.single('avatar'), wishesController.createWish);
 

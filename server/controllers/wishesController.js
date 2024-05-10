@@ -16,8 +16,14 @@ exports.getAllWishes = async (req, res) => {
             .sort({ createdAt: -1 })
             .skip(startIndex)
             .limit(limit);
-
-        res.json({ wishes, totalPages });
+            const wishesWithImages = wishes.map((wish) => {
+                return {
+                    ...wish,
+                    avatarUrl: `/uploads/${wish.avatar}`,
+                };
+            });
+    
+        res.json({ wishes, wishesWithImages, totalPages  });
     } catch (error) {
         console.error('Error retrieving wishes:', error);
         res.status(500).json({ message: 'Internal server error' });

@@ -8,7 +8,7 @@
  app.use(cors());
  app.use(express.json());
  app.use('/wish', wishesRoute);
-
+ app.use('/uploads', express.static('uploads'));
 
  app.get('/', (req, res) => {
     res.send("Welcome to Wish Hub backend");
