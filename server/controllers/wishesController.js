@@ -19,7 +19,7 @@ exports.getAllWishes = async (req, res) => {
             const wishesWithImages = wishes.map((wish) => {
                 return {
                     ...wish,
-                    avatarUrl: `/uploads/${wish.avatar}`,
+                    avatarUrl: `/public/uploads/${wish.avatar}`,
                 };
             });
     
