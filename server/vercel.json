@@ -13,5 +13,13 @@
       "dest": "/"
     }
   ],
-  "public": true
+  "builds": [
+    {
+      "src": "uploads/**",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public/uploads"
+      }
+    }
+  ]
 }
