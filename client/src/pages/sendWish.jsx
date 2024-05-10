@@ -30,7 +30,7 @@ const SendWish = () => {
     const file = event.target.files[0];
     if (file) {
       setImageFile(file);
-      setImagePreview(URL.createObjectURL(file)); // Use URL.createObjectURL to generate preview URL
+      setImagePreview(URL.createObjectURL(file));
     }
   };
   const handleSubmit = async (event) => {
@@ -41,14 +41,14 @@ const SendWish = () => {
       const formData = new FormData(); // Create a FormData object
       formData.append('message', message);
       formData.append('senderName', senderName);
-      formData.append('avatar', imageFile); // Append the image file
+      formData.append('avatar', imageFile); 
   
       const response = await axios.post(
         "https://easy-wish-uhlf.vercel.app/wish",
         formData,
         {
           headers: {
-            'Content-Type': 'multipart/form-data' // Set the Content-Type header
+            'Content-Type': 'multipart/form-data'
           }
         }
       );
