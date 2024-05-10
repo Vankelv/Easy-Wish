@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Pagination } from "@mui/material";
+import Avatar from '@mui/material/Avatar';
 
 const Home = ({isDarkMode}) => {
   const [wishes, setWishes] = useState([]);
@@ -10,13 +11,17 @@ const Home = ({isDarkMode}) => {
   useEffect(() => {
     const fetchWishes = async () => {
       try {
-        const response = await axios.get("https://easy-wish-uhlf.vercel.app/wish", {
+        const response = await axios.get("http://localhost:8080/wish", {
           params: {
             page: currentPage,
             limit: 18 
           }
         });
-        setWishes(response.data.wishes);
+        const wishes = response.data.wishes.map((wish) => ({
+          ...wish,
+          avatar: `http://localhost:8080/${wish.avatar}`
+        }));
+      setWishes(wishes);
         setTotalPages(response.data.totalPages);
       } catch (error) {
         console.error("Error fetching wishes:", error);
@@ -62,11 +67,14 @@ const Home = ({isDarkMode}) => {
           {assignColorToWishes().map((wish) => (
             <div
               key={wish._id}
-              className={`rounded text-[#fffefe] p-4 my-5 mr-5 ${wish.color}`}
+              className={`rounded text-[#fffefe] p-4 my-5 mr-5 flex items-center ${wish.color}`}
             >
-              <p className="font-bold">{wish.senderName}</p>
-              <p>{wish.message}</p>
-              
+             <Avatar alt={wish.senderName} src={`${wish.avatar}`} />
+              <div className="ml-3">
+                <p className="font-bold">{wish.senderName}</p>
+                <p>{wish.message}</p>
+                
+              </div>
             </div>
           ))}
         </div>
