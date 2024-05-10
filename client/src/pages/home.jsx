@@ -66,6 +66,7 @@ const Home = ({isDarkMode}) => {
             >
               <p className="font-bold">{wish.senderName}</p>
               <p>{wish.message}</p>
+              
             </div>
           ))}
         </div>
