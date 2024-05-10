@@ -13,7 +13,5 @@
       "dest": "/"
     }
   ],
-  "public": [
-    "uploads/**"
-  ]
+  "public": true
 }
