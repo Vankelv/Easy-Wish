@@ -8,9 +8,9 @@
     },
     {
       "src": "uploads/**",
-      "use": "@vercel/copy-files",
+      "use": "@vercel/static-build",
       "config": {
-        "dest": "public/uploads"
+        "distDir": "public/uploads"
       }
     }
   ],
