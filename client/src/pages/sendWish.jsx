@@ -14,6 +14,7 @@ const SendWish = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
   const [showModal, setShowModal] = useState(false);
 
@@ -100,7 +101,7 @@ const SendWish = () => {
                 />
               </div>
               <div className="border border-dashed my-5 rounded-md border-gray-500 relative">
-                <input type="file" multiple className="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50" />
+                <input type="file"  className="cursor-pointer relative block opacity-0 w-full h-full p-20 z-50" />
                 <div className="text-center p-10 absolute top-0 right-0 left-0 m-auto">
                   <h4>
                     Drop a beautiful image of you anywhere to upload
