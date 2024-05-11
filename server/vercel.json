@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "name": "Birth Wish Hub",
+  "version": 3,
+  "name": "Birthday Wish",
   "builds": [
     {
       "src": "*.js",
