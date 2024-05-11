@@ -44,7 +44,7 @@ const SendWish = () => {
       formData.append('avatar', imageFile); 
   
       const response = await axios.post(
-        "https://easy-wish-uhlf.vercel.app/wish",
+        "https://easy-wish-uhlf.vercel.app//wish",
         formData,
         {
           headers: {

@@ -19,7 +19,7 @@ const Home = ({isDarkMode}) => {
         });
         const wishes = response.data.wishes.map((wish) => ({
           ...wish,
-          avatar: `https://easy-wish-uhlf.vercel.app/uploads/${wish.avatar}`
+          avatar: wish.avatar
         }));
       setWishes(wishes);
         setTotalPages(response.data.totalPages);

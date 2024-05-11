@@ -3,12 +3,12 @@
  const cors = require('cors');
  const db = require('./db');
  const wishesRoute = require('./routes/wishes.js')
-
+ const uploadRoute = require('./controllers/routeUpload.js');
 
  app.use(cors());
  app.use(express.json());
  app.use('/wish', wishesRoute);
- app.use('/uploads', express.static('uploads'));
+ app.use("/api/users" , uploadRoute);
 
 
  app.get('/', (req, res) => {
