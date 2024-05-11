@@ -13,15 +13,16 @@ exports.getAllWishes = async (req, res) => {
 
         // Retrieve wishes with pagination
         const wishes = await Wishes.find()
-            .sort({ createdAt: -1 })
-            .skip(startIndex)
-            .limit(limit);
-            const wishesWithImages = wishes.map((wish) => {
-                return {
-                    ...wish,
-                    avatarUrl: `/uploads/${wish.avatar}`,
-                };
-            });
+        .sort({ createdAt: -1 })
+        .skip(startIndex)
+        .limit(limit);
+  
+      const wishesWithImages = wishes.map((wish) => {
+        return {
+          ...wish,
+          avatarUrl: wish.avatar, // Retrieve the image URL from MongoDB
+        };
+      });
     
         res.json({ wishes, wishesWithImages, totalPages  });
     } catch (error) {
@@ -31,15 +32,19 @@ exports.getAllWishes = async (req, res) => {
 };
 // Controller function to create a new wish
 exports.createWish = async (req, res) => {
-    try {
-      const wishes = new Wishes(req.body);
-      if (req.file){
-        wishes.avatar = req.file.path.filename; 
-      }
-      await wishes.save();
-      res.json(wishes);
-    } catch (err) {
-      console.error("Error creating new wish:", err);
-      res.status(500).json({ message: "Error creating new wish" });
+  try {
+    const wishes = new Wishes(req.body);
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.buffer, {
+        public_id: `wish-${require('uuid').v4()}`,
+        format: 'jpg',
+      });
+      wishes.avatar = result.secure_url; // Save the image URL in MongoDB
     }
-  };
+    await wishes.save();
+    res.json(wishes);
+  } catch (err) {
+    console.error("Error creating new wish:", err);
+    res.status(500).json({ message: "Error creating new wish" });
+  }
+};

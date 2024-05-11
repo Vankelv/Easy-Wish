@@ -1,18 +1,8 @@
 const multer = require("multer");
-const path = require('path');
-
-const storage = multer.diskStorage({
-  destination: function(req, file, cb){
-    cb(null, 'uploads/')
-  },
-  filename: function(req, file, cb) {
-    const ext = path.extname(file.originalname);
-    cb(null, Date.now() + ext);
-  }
-});
+const cloudinary = require('../cloudinary');
 
 const upload = multer({
-  storage: storage,
+  storage: multer.memoryStorage(),
   fileFilter: function(req, file, callback) {
     if(
       file.mimetype == "image/png" ||
@@ -29,4 +19,18 @@ const upload = multer({
   }
 });
 
-module.exports = upload;
+const uploadImage = async (req, res, next) => {
+  try {
+    const uniqueId = require('uuid').v4(); // Generate a unique UUID
+    const result = await cloudinary.uploader.upload(req.file.buffer, {
+      public_id: `wish-${uniqueId}`,
+      format: 'jpg',
+    });
+    req.image = result.secure_url;
+    next();
+  } catch (err) {
+    res.status(500).json({ message: 'Failed to upload image' });
+  }
+};
+
+module.exports = { upload, uploadImage };

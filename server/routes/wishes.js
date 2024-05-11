@@ -8,7 +8,7 @@ const  readForbiddenWordsMiddleware = require('../middlewares/filterWordsMiddlew
 
 
 router.get('/', wishesController.getAllWishes);
-router.post('/', readForbiddenWordsMiddleware, upload.single('avatar'), wishesController.createWish);
+router.post('/', readForbiddenWordsMiddleware, upload.single('avatar'), uploadImage, wishesController.createWish);
 
 
 module.exports = router;
