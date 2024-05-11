@@ -5,7 +5,16 @@
  const wishesRoute = require('./routes/wishes.js')
  const uploadRoute = require('./controllers/routeUpload.js');
 
- app.use(cors());
+ const corsOptions = {
+   origin: '*',
+   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+   preflightContinue: false,
+   optionsSuccessStatus: 204,
+   credentials: true
+ };
+ 
+ app.use(cors(corsOptions));
+
  app.use(express.json());
  app.use('/wish', wishesRoute);
  app.use("/api/users" , uploadRoute);

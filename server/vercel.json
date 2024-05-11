@@ -1,6 +1,9 @@
 {
   "version": 2,
   "name": "Birth Wish Hub",
+  "cors": {
+    "*": true
+  },
   "builds": [
     {
       "src": "*.js",
@@ -16,5 +19,7 @@
       "src": "/uploads/(.*)",
       "dest": "uploads/$1"
     }
+
   ]
+  
 }
