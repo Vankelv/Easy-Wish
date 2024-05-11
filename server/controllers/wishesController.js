@@ -18,7 +18,7 @@ exports.getAllWishes = async (req, res) => {
     const totalWishes = await Wishes.countDocuments({});
     const totalPages = Math.ceil(totalWishes / limit);
 
-    // Retrieve wishes with pagination
+   
     const wishes = await Wishes.find()
       .sort({ createdAt: -1 })
       .skip(startIndex)
@@ -27,7 +27,7 @@ exports.getAllWishes = async (req, res) => {
     const wishesWithImages = wishes.map((wish) => {
       return {
         ...wish,
-        avatarUrl: wish.avatar, // Retrieve the image URL from MongoDB
+        avatarUrl: wish.avatar, 
       };
     });
 
