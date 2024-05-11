@@ -30,14 +30,6 @@ const SendWish = () => {
     const file = event.target.files[0];
     if (file) {
       setImageFile(file);
-      setImagePreview(URL.createObjectURL(file)); // Use URL.createObjectURL to generate preview URL
-    }
-  };
-
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      setImageFile(file);
       setImagePreview(URL.createObjectURL(file));
     }
   };
@@ -55,8 +47,9 @@ const SendWish = () => {
         "https://easy-wish-ufoe.vercel.app/wish",
         formData,
         {
-          message,
-          senderName,
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
         }
       );
   
@@ -65,7 +58,7 @@ const SendWish = () => {
       setLoading(false);
       setError("");
       setSuccess(true);
-
+      setImagePreview(null); // Clear image preview
     } catch (err) {
       console.error("Error submitting wish:", err);
       setError(
@@ -96,7 +89,7 @@ const SendWish = () => {
 
           <div className=" border-gray-300 p-5 flex flex-col justify-center lg:p-11 lg:rounded-r-2xl border rounded-2xl ">
             <h2 className="font-manrope text-[18px] font-semibold ">
-             Say something nice to Naa 😊
+              Say something nice to Kukua 😊
             </h2>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
               <div className="mb-4">
@@ -186,29 +179,29 @@ const SendWish = () => {
                   role="alert"
                 >
                   <strong className="font-bold mr-2">Awesome! </strong>
-                  <div className=" flex items-center justify-between">
-                  <span className="flex-grow">
-                    Your wish was delivered to Naa successfully
-                  </span>
-                  <button
-                    onClick={() => setSuccess(false)} // Close button functionality
-                    className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                  <div className=" flex items-center text[#fff] justify-between">
+                    <span className="flex-grow">
+                    🎉🎂 Your birthday wish has been sent to Kukua! 📨
+                    </span>
+                    <button
+                      onClick={() => setSuccess(false)} // Close button functionality
+                      className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
                   </div>
                 </div>
               )}
