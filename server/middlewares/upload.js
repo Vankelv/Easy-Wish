@@ -1,7 +1,8 @@
 const multer = require("multer");
 const cloudinary = require('../cloudinary');
 
-const upload = multer({
+
+const multerUpload = multer({
   storage: multer.memoryStorage(),
   fileFilter: function(req, file, callback) {
     if(
@@ -33,4 +34,4 @@ const uploadImage = async (req, res, next) => {
   }
 };
 
-module.exports = { upload, uploadImage };
+module.exports = { multerUpload, uploadImage };
