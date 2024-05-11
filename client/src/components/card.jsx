@@ -48,7 +48,8 @@ export default function CongratCard() {
         🎊 You Made My Day! 🎉 🎊
       </Typography>
       <CardContent sx={{ maxWidth: '40ch' }}>
-      🎉🎂Thank you so much for taking your precious time to wish me a happy birthday! 😊Your kind words and thoughtful gesture mean the world to me. May your day be filled with love, laughter, and all your favorite things! 🎉💕
+      🎉🎂Thank you so much for taking your precious time to wish me a happy birthday! 😊Your kind words and thoughtful gesture mean 
+      the world to me. May your day be filled with love, laughter, and all your favorite things! 🎉💕
       </CardContent>
       <CardActions
         orientation="vertical"
