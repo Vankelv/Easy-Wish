@@ -4,6 +4,7 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}",],
   darkMode: 'class',
   theme: {
+
     screens: {
       sm: '480px',
       md: '600px',
@@ -34,7 +35,17 @@ export default {
       },
       borderRadius: {
         '4xl': '2rem',
-      }
+      },
+
+  animation: {
+    'infinite-scroll': 'infinite-scroll 25s linear infinite',
+  },
+  keyframes: {
+    'infinite-scroll': {
+      from: { transform: 'translateX(0)' },
+      to: { transform: 'translateX(-100%)' },
+    }
+  },
     }
   },
   plugins: [

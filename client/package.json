@@ -15,10 +15,9 @@
     "@mui/joy": "^5.0.0-beta.36",
     "@mui/material": "^5.15.17",
     "axios": "^1.6.8",
-    "framer-motion": "^11.1.9",
+    "fast-glob": "^3.3.2",
     "link": "^2.1.0",
     "react": "^18.2.0",
-    "react-awesome-shapes": "^0.1.12",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.1",
     "react-router-dom": "^6.23.0"

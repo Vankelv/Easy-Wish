@@ -2,15 +2,15 @@
   display: flex;
   overflow: hidden;
   gap: 10px;
-  width: 100%; /* Adjust width to accommodate all images */
+  width: 100%;
 }
 
-.background-image {
-  width: 20%; /* Ensure equal width for each image */
-  height: 50%;
+.sliderImg{
+    width: 400px; /* Set the width */
+    height: 300px; /* Set the height */
+    object-fit: cover; /* Scale the image to fit the size */
   border-radius: 10px;
   margin-bottom: 20px;
-  animation: scroll 3s linear infinite; /* Adjust duration as needed */
 }
 @media only screen and (max-width: 600px) {
   .background-image {
@@ -26,12 +26,25 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(0); /* Start with the first image in view */
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-200%); /* Move all images to the left by 200% */
+    transform: translateX(-100%); /* Changed to -100% to scroll one full width */
   }
 }
+
+@keyframes scroll-smooth {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-50%); /* Halfway point */
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
 
 .background-loop-wrapper {
   position: relative;
@@ -50,6 +63,8 @@
 
 .background-loop-content {
   position: relative;
-  z-index: 99; /* Ensure content is on top of the background */
+  z-index: 99; 
 }
-
+.background-image {
+  animation: scroll-smooth 20s linear infinite; /* Replaced with the new keyframe */
+}

@@ -76,8 +76,8 @@ const SendWish = () => {
             <div className="group w-full h-full">
               <div className="relative h-auto">
                 <img
-                  src="/imgs/Slider.jpeg"
-                  alt="ContactUs tailwind section"
+                  src="/imgs/slids/Slider.jpeg"
+                  alt="Birthday celebrant image"
                   className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
                 />
                 <div className="absolute bottom-0 w-full lg:p-11 p-5">

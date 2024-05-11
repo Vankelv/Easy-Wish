@@ -37,7 +37,7 @@ export default function CongratCard() {
         >
           <div>
           <img
-                  src="/imgs/Slider3.jpeg"
+                  src="/imgs/slids/Slider3.jpeg"
                   alt="Birthday cele"
                   className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
                 />
