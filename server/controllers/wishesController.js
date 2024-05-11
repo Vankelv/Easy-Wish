@@ -2,6 +2,7 @@ const Wishes = require("../models/wishes.js");
 const express = require('express');
 const router = express.Router();
 const cloudinary = require("../utils/cloudinary");
+const sendWishEmail = require("../data/email.js")
 
 const upload = require("../middlewares/multer");
 
@@ -47,6 +48,8 @@ exports.createWish = async (req, res) => {
       avatar: result.secure_url
     });
     await wish.save();
+
+    sendWishEmail(req.body.senderName, req.body.message, req.avatar);
     res.status(201).json({
       success: true,
       message: "Wish created successfully",
