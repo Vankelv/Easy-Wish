@@ -1,16 +1,16 @@
 {
-  "version": 2,
-  "name": "Birth Wish Hub",
-  "builds": [
-    {
-      "src": "*.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "public/**",
-      "dest": "public"
-    }
-  ]
-}
+    "version": 2,
+    "name": "Birth Wish Hub",
+    "builds": [
+      {
+        "src": "*.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/"
+      }
+    ]
+  }

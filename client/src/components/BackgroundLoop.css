@@ -10,7 +10,7 @@
   height: 50%;
   border-radius: 10px;
   margin-bottom: 20px;
-  animation: scroll 15s linear infinite; /* Adjust duration as needed */
+  animation: scroll 3s linear infinite; /* Adjust duration as needed */
 }
 @media only screen and (max-width: 600px) {
   .background-image {

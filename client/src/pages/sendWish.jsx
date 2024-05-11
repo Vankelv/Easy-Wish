@@ -34,27 +34,38 @@ const SendWish = () => {
     }
   };
 
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageFile(file);
+      setImagePreview(URL.createObjectURL(file));
+    }
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
-
+  
     try {
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-
+      const formData = new FormData(); // Create a FormData object
+      formData.append('message', message);
+      formData.append('senderName', senderName);
+      formData.append('avatar', imageFile); 
+  
       const response = await axios.post(
-        "https://easy-wish-uhlf.vercel.app/wish",
+        "https://easy-wish-ufoe.vercel.app/wish",
+        formData,
         {
           message,
           senderName,
-          image: imageFile,
         }
       );
-
+  
       setMessage("");
       setSenderName("");
       setLoading(false);
       setError("");
       setSuccess(true);
+
     } catch (err) {
       console.error("Error submitting wish:", err);
       setError(
@@ -85,7 +96,7 @@ const SendWish = () => {
 
           <div className=" border-gray-300 p-5 flex flex-col justify-center lg:p-11 lg:rounded-r-2xl border rounded-2xl ">
             <h2 className="font-manrope text-[18px] font-semibold ">
-              Say something nice to Naa 😊
+             Say something nice to Naa 😊
             </h2>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
               <div className="mb-4">
@@ -176,28 +187,28 @@ const SendWish = () => {
                 >
                   <strong className="font-bold mr-2">Awesome! </strong>
                   <div className=" flex items-center justify-between">
-                    <span className="flex-grow">
-                      Your wish was delivered to Naa successfully
-                    </span>
-                    <button
-                      onClick={() => setSuccess(false)} // Close button functionality
-                      className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
+                  <span className="flex-grow">
+                    Your wish was delivered to Naa successfully
+                  </span>
+                  <button
+                    onClick={() => setSuccess(false)} // Close button functionality
+                    className="ml-2 p-2 text-[#317625] hover:text-[#fff] focus:outline-none"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
                   </div>
                 </div>
               )}

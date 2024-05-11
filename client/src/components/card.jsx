@@ -37,7 +37,7 @@ export default function CongratCard() {
         >
           <div>
           <img
-                  src="/imgs/slider3.png"
+                  src="/imgs/Slider3.jpeg"
                   alt="Birthday cele"
                   className="w-full h-full lg:rounded-l-2xl rounded-2xl bg-blend-multiply bg-indigo-700"
                 />
@@ -45,11 +45,11 @@ export default function CongratCard() {
         </AspectRatio>
       </CardOverflow>
       <Typography level="title-lg" sx={{ mt: 'calc(var(--icon-size) / 2)' }}>
-        🎊 Thank you 🎊
+        🎊 You Made My Day! 🎉 🎊
       </Typography>
       <CardContent sx={{ maxWidth: '40ch' }}>
-        You just gain one Cookhat for Salad cooking. Share your achievement with your
-        friends.
+      🎉🎂Thank you so much for taking your precious time to wish me a happy birthday! 😊Your kind words and thoughtful gesture mean 
+      the world to me. May your day be filled with love, laughter, and all your favorite things! 🎉💕
       </CardContent>
       <CardActions
         orientation="vertical"
@@ -60,7 +60,7 @@ export default function CongratCard() {
         }}
       >
         <Button variant="solid" color="warning">
-          Share
+          God Bless You 🙏
         </Button>
       </CardActions>
     </Card>
