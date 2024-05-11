@@ -41,15 +41,19 @@ exports.getAllWishes = async (req, res) => {
 // Controller function to create a new wish
 exports.createWish = async (req, res) => {
   try {
-    const result = await cloudinary.uploader.upload(req.file.path);
+    let avatarUrl = null;
+    if (req.file) {
+      const result = await cloudinary.uploader.upload(req.file.path);
+      avatarUrl = result.secure_url;
+    }
     const wish = new Wishes({
       message: req.body.message,
       senderName: req.body.senderName,
-      avatar: result.secure_url
+      avatar: avatarUrl
     });
     await wish.save();
 
-    sendWishEmail(req.body.senderName, req.body.message, req.avatar);
+    sendWishEmail(req.body.senderName, req.body.message, avatarUrl);
     res.status(201).json({
       success: true,
       message: "Wish created successfully",

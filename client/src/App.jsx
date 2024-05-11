@@ -68,7 +68,7 @@ function App() {
       className={` ${isDarkMode ? 'dark' : ''} md:w-full justify-center flex flex-col`}
       style={isDarkMode ? { color: 'dark' } : {}}
       >
-        <h1 className='mt-10 font-poppins text-center font-bold text-[100px] sm:text-[30px]'>Happy Birthday Naa</h1>
+        <h1 className='mt-10 font-poppins text-center font-bold text-[100px] sm:text-[60px]'> 🎉💕 Happy Birthday Kukua! 🎉🎂 </h1>
         <div className="absolute top-4 gap-5 justify-between right-4 flex items-center">
         <nav>
             <ul className="flex justify-center space-x-6 font-poppins my-6">

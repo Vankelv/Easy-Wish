@@ -89,7 +89,7 @@ const SendWish = () => {
 
           <div className=" border-gray-300 p-5 flex flex-col justify-center lg:p-11 lg:rounded-r-2xl border rounded-2xl ">
             <h2 className="font-manrope text-[18px] font-semibold ">
-              Say something nice to Naa 😊
+              Say something nice to Kukua 😊
             </h2>
             <form onSubmit={handleSubmit} className="w-full md:max-w">
               <div className="mb-4">
@@ -179,9 +179,9 @@ const SendWish = () => {
                   role="alert"
                 >
                   <strong className="font-bold mr-2">Awesome! </strong>
-                  <div className=" flex items-center justify-between">
+                  <div className=" flex items-center text[#fff] justify-between">
                     <span className="flex-grow">
-                      Your wish was delivered to Naa successfully
+                    🎉🎂 Your birthday wish has been sent to Kukua! 📨
                     </span>
                     <button
                       onClick={() => setSuccess(false)} // Close button functionality
