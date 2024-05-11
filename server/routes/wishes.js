@@ -10,7 +10,7 @@ const upload = multer({ dest: 'uploads/' });
 
 
 router.get('/', wishesController.getAllWishes);
-router.post('/', readForbiddenWordsMiddleware, upload.single('avatar'), uploadImage, wishesController.createWish);
+router.post('/', readForbiddenWordsMiddleware, upload.single('avatar'), wishesController.createWish);
 
 
 module.exports = router;
