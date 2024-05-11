@@ -11,7 +11,7 @@ const Home = ({isDarkMode}) => {
   useEffect(() => {
     const fetchWishes = async () => {
       try {
-        const response = await axios.get("https://easy-wish-uhlf.vercel.app/wish", {
+        const response = await axios.get("https://easy-wish-ufoe.vercel.app/wish", { 
           params: {
             page: currentPage,
             limit: 18 
