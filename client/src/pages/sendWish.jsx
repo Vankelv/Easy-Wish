@@ -104,7 +104,7 @@ const SendWish = () => {
                   className="w-full border border-gray-300 focus:outline-none text-[#000] rounded px-3 py-2"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  maxLength={100}
+                  maxLength={500}
                   minLength={10}
                   rows={6}
                   required

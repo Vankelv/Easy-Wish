@@ -4,7 +4,7 @@ const wishSchema = new mongoose.Schema({
   message: {
     type: String,
     required: true,
-    maxlength: 100 
+    maxlength: 500 
   },
   senderName: {
     type: String,
