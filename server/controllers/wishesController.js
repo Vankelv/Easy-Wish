@@ -34,7 +34,7 @@ exports.getAllWishes = async (req, res) => {
 
     res.json({ wishes, wishesWithImages, totalPages });
   } catch (error) {
-    console.error('Error retrieving wishes:', error);
+    // console.error('Error retrieving wishes:', error);
     res.status(500).json({ message: 'Internal server error' });
   }
 };
@@ -60,7 +60,7 @@ exports.createWish = async (req, res) => {
       data: wish
     });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.status(500).json({
       success: false,
       message: "Error creating wish"

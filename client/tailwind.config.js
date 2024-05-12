@@ -38,7 +38,7 @@ export default {
       },
 
   animation: {
-    'infinite-scroll': 'infinite-scroll 25s linear infinite',
+    'infinite-scroll': 'infinite-scroll 45s linear infinite',
   },
   keyframes: {
     'infinite-scroll': {

@@ -16,7 +16,7 @@ const Home = ({ isDarkMode }) => {
           {
             params: {
               page: currentPage,
-              limit: 18,
+              limit: 20,
             },
           }
         );
@@ -27,7 +27,7 @@ const Home = ({ isDarkMode }) => {
         setWishes(wishes);
         setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.error("Error fetching wishes:", error);
+        // console.error("Error fetching wishes:", error);
       }
     };
 

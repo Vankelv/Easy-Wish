@@ -21,7 +21,7 @@ const SendWish = () => {
     if (success) {
       timer = setTimeout(() => {
         setShowModal(true);
-      }, 4000);
+      }, 3000);
     }
     return () => clearTimeout(timer);
   }, [success]);
@@ -60,7 +60,7 @@ const SendWish = () => {
       setSuccess(true);
       setImagePreview(null); // Clear image preview
     } catch (err) {
-      console.error("Error submitting wish:", err);
+      // console.error("Error submitting wish:", err);
       setError(
         "An error occurred while submitting your wish. Please try again later."
       );
