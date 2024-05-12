@@ -16,7 +16,7 @@ const Home = ({ isDarkMode }) => {
           {
             params: {
               page: currentPage,
-              limit: 20,
+              limit: 6,
             },
           }
         );
@@ -80,7 +80,7 @@ const Home = ({ isDarkMode }) => {
               
               <div className="ml-3">
                 <p className="font-bold">{wish.senderName}</p>
-                <p>{wish.message}</p>
+                <p className="text-[24px]">{wish.message}</p>
               </div>
             </div>
           ))}
