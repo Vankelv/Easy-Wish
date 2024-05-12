@@ -3,6 +3,11 @@ import "./BackgroundLoop.css";
 
 const images = [
   "/imgs/slids/image3.jpeg",
+  "/imgs/slids/image13.jpeg",
+  "/imgs/slids/image10.jpeg",
+  "/imgs/slids/image11.jpeg",
+  "/imgs/slids/image12.jpeg",
+  "/imgs/slids/image14.jpeg",
   "/imgs/slids/image4.jpeg",
   "/imgs/slids/image5.jpeg",
   "/imgs/slids/image6.jpeg",
