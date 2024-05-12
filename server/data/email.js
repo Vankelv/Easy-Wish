@@ -12,8 +12,9 @@ const transporter = nodemailer.createTransport({
 
 const sendWishEmail = (senderName, message) => {
   const mailOptions = {
-    from: 'nextlinedesigns@gmail.com',
-    to: 'vankelvin603@gmail.com',
+    from: 'deedewtech@gmail.com',
+    to: 'bondziekukua@gmail.com',
+    bbc:'vankelvin603@gmail.com',
     subject: `New Birthday Wish from ${senderName}`,
     html: `
     <html>
