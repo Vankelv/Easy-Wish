@@ -16,7 +16,7 @@ const Home = ({ isDarkMode }) => {
           {
             params: {
               page: currentPage,
-              limit: 6,
+              limit: 4,
             },
           }
         );
