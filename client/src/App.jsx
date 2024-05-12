@@ -82,6 +82,7 @@ function App() {
         </div>
 
         <div className='mx-1'>
+          
           <Routes>
             <Route path="/" element={<Home isDarkMode={isDarkMode}/>} />
             <Route path="/sendwish" element={<SendWish />} />

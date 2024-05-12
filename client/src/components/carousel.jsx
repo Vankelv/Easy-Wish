@@ -2,11 +2,14 @@ import React from "react";
 import "./BackgroundLoop.css";
 
 const images = [
+  "/imgs/slids/Slider111.jpeg",
   "/imgs/slids/Slider1.jpg",
   "/imgs/slids/Slider2.jpg",
+  "/imgs/slids/Slider333.jpeg",
   "/imgs/slids/Slider24.jpg",
   "/imgs/slids/Slider3.jpeg",
-  "/imgs/slids/Slider4.jpg",
+  "/imgs/slids/Slider444.jpeg",
+  "/imgs/slids/Slider222.jpeg",
   "/imgs/slids/Slider5.jpg",
   "/imgs/slids/Slider28.jpg",
   "/imgs/slids/Slider6.jpg",
