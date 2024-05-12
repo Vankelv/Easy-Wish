@@ -4,9 +4,11 @@ import "./BackgroundLoop.css";
 const images = [
   "/imgs/slids/Slider1.jpg",
   "/imgs/slids/Slider2.jpg",
+  "/imgs/slids/Slider24.jpg",
   "/imgs/slids/Slider3.jpeg",
   "/imgs/slids/Slider4.jpg",
   "/imgs/slids/Slider5.jpg",
+  "/imgs/slids/Slider28.jpg",
   "/imgs/slids/Slider6.jpg",
   "/imgs/slids/Slider7.jpg",
   "/imgs/slids/Slider8.jpg",
@@ -14,16 +16,19 @@ const images = [
   "/imgs/slids/Slider10.jpg",
   "/imgs/slids/Slider11.jpg",
   "/imgs/slids/Slider12.jpg",
+  "/imgs/slids/Slider27.jpg",
   "/imgs/slids/Slider13.jpg",
   "/imgs/slids/Slider14.jpg",
   "/imgs/slids/Slider15.jpg",
   "/imgs/slids/Slider16.jpg",
+  "/imgs/slids/Slider25.jpg",
   "/imgs/slids/Slider18.jpg",
   "/imgs/slids/Slider17.jpg",
   "/imgs/slids/Slider20.jpg",
   "/imgs/slids/Slider19.jpg",
   "/imgs/slids/Slider21.jpeg",
   "/imgs/slids/Slider23.jpeg",
+  "/imgs/slids/Slider26.jpg",
   // Add more image paths as needed
 ];
 
