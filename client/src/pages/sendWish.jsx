@@ -113,20 +113,20 @@ const SendWish = () => {
               <div className="border border-dashed my-5 rounded-md border-gray-500 relative">
                 <input
                   type="file"
-                  className="cursor-pointer absolute inset-0 opacity-0 w-full h-full z-50"
+                  className="cursor-pointer absolute inset-0 opacity-0 z-50"
                   onChange={handleImageChange}
                 />
-                <div className="relative h-64 bg-cover bg-center">
+                <div className="relative bg-cover bg-center">
                   {imagePreview && (
                     <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url('${imagePreview}')` }}
+                      className="absolute  inset-0 bg-cover bg-center"
+                      style={{  backgroundImage: `url('${imagePreview}')` }}
                     ></div>
                   )}
                   {!imagePreview && (
                     <div className="text-center p-10">
                       <h4>
-                        Drop a beautiful image of you anywhere to upload
+                        Drop an image of you anywhere to upload
                         <br />
                         or
                       </h4>

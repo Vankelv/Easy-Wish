@@ -53,7 +53,7 @@ exports.createWish = async (req, res) => {
     });
     await wish.save();
 
-    sendWishEmail(req.body.senderName, req.body.message, avatarUrl);
+    // sendWishEmail(req.body.senderName, req.body.message, avatarUrl);
     res.status(201).json({
       success: true,
       message: "Wish created successfully",
